@@ -281,17 +281,25 @@ margins = {
 
 generate = function()
 {
-	var pdf = new jsPDF('p', 'pt', 'a4');
-	pdf.setFontSize(14);
+	var pdf = new jsPDF('p', 'mm', 'a4', true);
+	pdf.setFontSize(18);
+	pdf.html(document.getElementById('pricing-table'), {
+				callback: function () {
+						pdf.save('test.pdf');
+						// window.open(doc.output('bloburl')); // use this to debug
+				}
+		}, margins)
 	pdf.html(document.getElementById('pricing-table'), 
     margins.left, // x coord
     margins.top,
     {
       // y coord
-      width: margins.width// max width of content on PDF
-    },function(dispose) {
-      pdf.save('test.pdf');
-    }, 
+      width: margins.width, // max width of content on PDF,
+			callback: function () {
+						pdf.save('test.pdf');
+						// window.open(doc.output('bloburl')); // use this to debug
+				}
+    },
     margins);
 		
 	// var iframe = document.createElement('iframe');
