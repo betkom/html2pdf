@@ -274,12 +274,10 @@ generate = function()
 	var pdf = new jsPDF('p', 'pt', 'a4', true);
 	pdf.setFontSize(14);
 
-	pdf.html(document.getElementById('pricing-table'), 
-    margins.left, // x coord
-    margins.top,
+	pdf.html(document.getElementById('pricing-table'),
     {
       // y coord
-      width: margins.width, // max width of content on PDF,
+			html2canvas: {width: margins.width},
 			callback: function () {
 						pdf.save('test.pdf');
 						// window.open(doc.output('bloburl')); // use this to debug
