@@ -269,21 +269,28 @@ margins = {
 };
 
 
-generate = function()
-{
-	var pdf = new jsPDF('p', 'pt', 'a4', true);
-	pdf.setFontSize(14);
+generate = function() {
+	const domElement = document.getElementById('pricing-table')
+		html2canvas(domElement, { onclone: (document) => {
+	}}).then((canvas) => {
+        const img = canvas.toDataURL('image/png')
+        const pdf = new jsPdf()
+        pdf.addImage(imgData, 'JPEG', 0, 0, width, height)
+        pdf.save('ttt.pdf')
+})
+	// var pdf = new jsPDF('p', 'pt', 'a4', true);
+	// pdf.setFontSize(14);
 
-	pdf.html(document.getElementById('pricing-table'),
-    {
-      // y coord
-			html2canvas: {width: margins.width},
-			callback: function () {
-						pdf.save('test.pdf');
-						// window.open(doc.output('bloburl')); // use this to debug
-				}
-    },
-    margins);
+	// pdf.html(document.getElementById('pricing-table'),
+  //   {
+  //     // y coord
+	// 		html2canvas: {width: margins.width, scale: 0.5},
+	// 		callback: function () {
+	// 					pdf.save('test.pdf');
+	// 					// window.open(doc.output('bloburl')); // use this to debug
+	// 			}
+  //   },
+  //   margins);
 };
 
 
