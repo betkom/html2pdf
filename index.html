@@ -255,50 +255,7 @@ body{
         integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/"
         crossorigin="anonymous"></script>
 <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
-	<script>
-// var base64Img = null;
-// imgToBase64('octocat.jpg', function(base64) {
-//     base64Img = base64; 
-// });
-
-margins = {
-  top: 70,
-  bottom: 40,
-  left: 30,
-  width: 550
-}
-
-printPDF = function() {
-		const domElement = document.getElementById('pricing-table')
-		html2canvas(domElement, { onclone: (document) => {
-	}}).then((canvas) => {
-			const img = canvas.toDataURL('image/png')
-			const pdf = new jsPDF('p', 'pt', 'a4')
-			pdf.addImage(img, 'JPEG', 0, 0, 400, null)
-			pdf.save('document.pdf')
-	})
-}
-
-
-generate = function() {
 	
-	var pdf = new jsPDF('p', 'pt', 'a4', true);
-	pdf.setFontSize(14);
-
-	pdf.html(document.getElementById('pricing-table'),
-    {
-      // y coord
-			html2canvas: {width: margins.width, scale: 1},
-			callback: function () {
-						pdf.save('test.pdf');
-						// window.open(doc.output('bloburl')); // use this to debug
-				}
-    });
-};
-
-
-
- </script>
-	<!--<script type="text/javascript" src="js/script.js" charset="utf-8"></script>-->
+	<script type="text/javascript" src="js/script.js" charset="utf-8"></script>
 </body>
 </html>
