@@ -274,7 +274,7 @@ generate = function() {
 		html2canvas(domElement, { onclone: (document) => {
 	}}).then((canvas) => {
         const img = canvas.toDataURL('image/png')
-        const pdf = new jsPdf()
+        const pdf = new jsPDF()
         pdf.addImage(imgData, 'JPEG', 0, 0, width, height)
         pdf.save('ttt.pdf')
 })
