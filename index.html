@@ -288,7 +288,7 @@ generate = function() {
 	pdf.html(document.getElementById('pricing-table'),
     {
       // y coord
-			html2canvas: {width: margins.width, scale: 0.5},
+			html2canvas: {width: margins.width, scale: 1},
 			callback: function () {
 						pdf.save('test.pdf');
 						// window.open(doc.output('bloburl')); // use this to debug
